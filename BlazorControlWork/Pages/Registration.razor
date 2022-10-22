@@ -1,0 +1,67 @@
+﻿@page "/reg"
+@using BlazorControlWork.Data
+@inject BlazorControlWork.Data.UserService service
+<h1>Registration</h1>
+
+<div class="row">
+    <div class="row">
+        <div class="colo-md-4">
+            <label>Name :</label>
+        </div>
+        <div class="colo-md-8">
+            <input @bind="user.Name" style="width:30%;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="colo-md-4">
+            <label>SurName :</label>
+        </div>
+        <div class="colo-md-8">
+            <input @bind="user.Surname" style="width:30%;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="colo-md-4">
+            <label>Email :</label>
+        </div>
+        <div class="colo-md-8">
+            <input type="email" @bind="user.Email" style="width:30%;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="colo-md-4">
+            <label>Login :</label>
+        </div>
+        <div class="colo-md-8">
+            <input @bind="user.Login" style="width:30%;" />
+        </div>
+        <div class="row">
+            <div class="colo-md-4">
+                <label>Password :</label>
+            </div>
+            <div class="colo-md-8">
+                <input type="password" @bind="user.Password" style="width:30%;" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="colo-md-4">
+                <label>Confirm Password :</label>
+            </div>
+            <div class="colo-md-8">
+                <input type="password" style="width:30%;" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="colo-md-8">
+                <button class="btn btn-primary" @onclick="(x => Save())">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    User user = new User();
+    private void Save()
+    {
+        service.Save(user);
+    }
+}

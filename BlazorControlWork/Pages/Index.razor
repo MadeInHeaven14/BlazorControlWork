@@ -1,0 +1,52 @@
+﻿@page "/"
+@using BlazorControlWork.Data
+@inject BlazorControlWork.Data.UserService service
+
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, Guest!</h1>
+
+Welcome our site.
+<br />
+<br/>
+<h1>Sign in</h1>
+
+<div class="row">
+    <div class="row">
+        <div class="colo-md-4">
+            <label>Login :</label>
+        </div>
+        <div class="colo-md-8">
+            <input @bind="Login" style="width:30%;"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="colo-md-4">
+            <label>Password :</label>
+        </div>
+        <div class="colo-md-8">
+            <input @bind="Password" style="width:30%;"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="colo-md-8">
+            <button class="btn btn-primary">Save</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="colo-md-4">
+            <a href="reg">Registration</a>
+        </div>
+    </div>
+</div>
+
+@code {
+    User user = new User();
+    private string Login = "";
+    private string Password = "";
+    private void Log()
+    {
+        MongoExamples.FindByName(Login, Password);
+    }
+}
